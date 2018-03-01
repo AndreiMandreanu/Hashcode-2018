@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicle {
@@ -12,6 +13,11 @@ public class Vehicle {
     currTime = 0;
   }
 
+  public Vehicle(){
+    this.rides = new ArrayList<>();
+    currPosition = new Position(0,0);
+    currTime = 0;
+  }
   public Position getCurrPosition() {
     return currPosition;
   }
