@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Simulation {
 
@@ -26,14 +27,25 @@ public class Simulation {
     Ride ride = rides.get(0);
     rides.remove(ride);
     List<Vehicle> availableVehicles = getAvailableVehicles(ride);
-    getClosestVehicles(availableVehicles).getRides.add(ride);
+
+    getClosestVehicle(availableVehicles, position).getRides.add(ride);
   }
 
-  public Vehicle getAvailableVehicles(Ride ride) {
+  public List<Vehicle> getAvailableVehicles(Ride ride) {
+    List <Vehicle> availableVehicles = new ArrayList<>();
+    int startTime = ride.getStartTime();
+    int endTime = ride.getEndTime();
+    Position startPos = ride.getStartPos();
+    Position endPos = ride.getEndPos();
     for(Vehicle v : vehicles) {
-      ride
+      if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getPosition(v.whenFree)) {
+        availableVehicles.add(v);
+      }
     }
+    return availableVehicles;
   }
+
+
 
 
 }
