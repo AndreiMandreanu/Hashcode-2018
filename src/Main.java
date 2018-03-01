@@ -30,13 +30,13 @@ public class Main {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    String[] arg = firstLine.split(" ");
-                    a = Integer.parseInt(split[0]);
-                    b = Integer.parseInt(split[1]);
-                    x = Integer.parseInt(split[2]);
-                    y = Integer.parseInt(split[3]);
-                    s = Integer.parseInt(split[4]);
-                    f = Integer.parseInt(split[5]);
+                    String[] arg = line.split(" ");
+                    a = Integer.parseInt(arg[0]);
+                    b = Integer.parseInt(arg[1]);
+                    x = Integer.parseInt(arg[2]);
+                    y = Integer.parseInt(arg[3]);
+                    s = Integer.parseInt(arg[4]);
+                    f = Integer.parseInt(arg[5]);
                     
                 }
 
