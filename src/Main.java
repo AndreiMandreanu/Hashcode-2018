@@ -75,12 +75,16 @@ public class Main {
         List<Vehicle> vehicles = simulation.getVehicles();
         for(Vehicle v : vehicles){
             StringBuilder rideNos = new StringBuilder();
-            List<Integer> rideNumbers = v.getRides();
-            for(Integer i : rideNumbers){
-                rideNos.append(i).append(" ");
+            List<Ride> rideNumbers = v.getRides();
+            for(Ride r: rideNumbers){
+                rideNos.append(r.getId()).append(" ");
             }
             assert bufferedWriter != null;
-            bufferedWriter.write(v.rides.size() + " " + rideNos);
+            try {
+                bufferedWriter.write(v.getRides().size() + " " + rideNos);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         try {
