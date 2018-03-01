@@ -21,6 +21,7 @@ public class Simulation {
     this.numberOfSteps = numberOfSteps;
     this.width = width;
     this.heigth = height;
+    assignRides();
   }
 
   public void assignRides() {
