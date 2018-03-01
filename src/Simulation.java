@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Simulation {
+public class Simulation{
 
   private final List<Vehicle> vehicles;
   private final List<Ride> rides;
@@ -11,7 +12,13 @@ public class Simulation {
   private final int width;
   private final int heigth;
 
+  class RideComparator implements Comparator<Ride> {
 
+    @Override
+    public int compare(Ride o1, Ride o2) {
+      return Integer.compare(o1.getEarliestStart(), o2.getEarliestStart());
+    }
+  }
 
   public Simulation(List<Vehicle> vehicles, List<Ride> rides,
       int width, int height, int bonus, int numberOfSteps){
@@ -21,6 +28,14 @@ public class Simulation {
     this.numberOfSteps = numberOfSteps;
     this.width = width;
     this.heigth = height;
+    rides.sort(new RideComparator());
+    assignRides();
+  }
+
+  public void assignRides() {
+    while(!rides.isEmpty()) {
+      assignRide();
+    }
   }
   
 
@@ -54,9 +69,9 @@ public class Simulation {
     int startTime = ride.getEarliestStart();
     int endTime = ride.getLatestFinish();
     Position startPos = ride.getStartIntersection();
-    Position endPos = ride.getEndIntersection();
+    Position endPos = ride.getStartIntersection();
     for(Vehicle v : vehicles) {
-      if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getLastPosition()) {
+      if(v.earliestFinishTime() <= endTime - distance(startPos, endPos) - distance(v.getCurrPosition(), startPos)) {
         availableVehicles.add(v);
       }
     }
