@@ -12,12 +12,23 @@ public class Vehicle {
   }
 
   public void addRide(Ride ride) {
+    if (rides.isEmpty()) {
+    }
+      Ride lastRide = rides.get(rides.size() - 1);
+      Position currentPosition = lastRide.getEndIntersection();
+      Position rideStartIntersection = ride.getStartIntersection();
+      Position rideEndIntersection = ride.getEndIntersection();
+      int distanceFromLastRide = Math.abs(rideStartIntersection.getY() -
+          currentPosition.getY()) + Math.abs(rideStartIntersection.getX() -
+          currentPosition.getX());
+      int rideDistance =
+          Math.abs(rideEndIntersection.getY() - rideStartIntersection.getY())
+              + Math
+              .abs(rideEndIntersection.getX() - rideStartIntersection.getX());
+      earliestFinishTime = Math.max(earliestFinishTime + distanceFromLastRide,
+          ride.getEarliestStart()) + rideDistance;
+    }
     rides.add(ride);
-    Position startIntersection = ride.getStartIntersection();
-    Position endIntersection = ride.getEndIntersection();
-    int distance = Math.abs(endIntersection.getY() - startIntersection.getY())
-        + Math.abs(endIntersection.getX() - startIntersection.getX());
-
   }
 
   public int getEarliestFinishTime() {
@@ -28,11 +39,5 @@ public class Vehicle {
     return rides;
   }
 
-  public boolean isAvailable(int time) {
-    for (Ride ride : rides) {
-      Position startIntersection = ride.getStartIntersection();
-      Position endIntersection = ride.getEndIntersection();
-
-    }
-  }
 }
+
