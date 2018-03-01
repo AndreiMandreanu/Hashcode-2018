@@ -60,7 +60,7 @@ public class Simulation {
     int startTime = ride.getEarliestStart();
     int endTime = ride.getLatestFinish();
     Position startPos = ride.getStartIntersection();
-    Position endPos = ride.getEndIntersection();
+    Position endPos = ride.getStartIntersection();
     for(Vehicle v : vehicles) {
       if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getLastPosition()) {
         availableVehicles.add(v);
