@@ -13,7 +13,21 @@ public class Ride {
     this.latestFinish = latestFinish;
   }
 
+  public int getEarliestStart() {
+    return earliestStart;
+  }
 
+  public int getLatestFinish() {
+    return latestFinish;
+  }
+
+  public Position getStartIntersection() {
+    return startIntersection;
+  }
+
+  public Position getEndIntersection() {
+    return endIntersection;
+  }
 
 
 }
