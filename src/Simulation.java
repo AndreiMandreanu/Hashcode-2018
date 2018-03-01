@@ -22,4 +22,29 @@ public class Simulation {
     this.heigth = height;
   }
 
+
+  private List<Vehicle> getAvailableVehicles(){
+    for (Vehicle c : cars) {
+
+    }}
+
+
+
+    private int distance(Position s, Position f){
+    return Math.abs(s.getX() - f.getX()) + Math.abs(s.getY() - f.getY());
+    }
+
+  private Vehicle getClosestVehicle(Position position, List<Vehicle> vehicles){
+    int smallestDistance = Integer.MAX_VALUE;
+    Vehicle closest = null;
+    for (Vehicle c: vehicles){
+      int newDistance = distance(c.getCurrPosition(), position);
+      if (newDistance <= smallestDistance){
+        smallestDistance = newDistance;
+        closest = c;
+      }
+    }
+    return closest;
+  }
+
 }

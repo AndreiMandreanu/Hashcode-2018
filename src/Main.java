@@ -34,7 +34,8 @@ public class Main {
                 List<Ride> rides = new ArrayList<>();
                 List<Vehicle> cars;
                 String line;
-                while ((line = reader.readLine()) != null) {
+                for (int i = 0; i < N; i++){
+                    line = reader.readLine();
                     String[] arg = line.split(" ");
                     a = Integer.parseInt(arg[0]);
                     b = Integer.parseInt(arg[1]);
@@ -47,6 +48,7 @@ public class Main {
                     Ride ride = new Ride(start, finish, s, f);
                     rides.add(ride);
                 }
+
                 cars = IntStream.range(0, F).mapToObj(i -> new Vehicle()).collect(Collectors.toList());
                 Simulation simulation = new Simulation(cars, rides, R, C, B, T);
 
