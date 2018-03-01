@@ -1,26 +1,38 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Vehicle {
 
-  private final int currTime;
-  private final List<Ride> rides;
-  private Position currPosition;
+  private int earliestFinishTime;
+  private List<Ride> rides;
 
-  public Vehicle(List<Ride> rides) {
-    this.rides = rides;
-    currPosition = new Position(0, 0);
-    currTime = 0;
+  public Vehicle() {
+    earliestFinishTime = 0;
+    rides = new LinkedList<>();
   }
 
-  public Vehicle(){
-    this.rides = new ArrayList<>();
-    currPosition = new Position(0,0);
-    currTime = 0;
-  }
-  public Position getCurrPosition() {
-    return currPosition;
+  public void addRide(Ride ride) {
+    rides.add(ride);
+    Position startIntersection = ride.getStartIntersection();
+    Position endIntersection = ride.getEndIntersection();
+    int distance = Math.abs(endIntersection.getY() - startIntersection.getY())
+        + Math.abs(endIntersection.getX() - startIntersection.getX());
+
   }
 
+  public int getEarliestFinishTime() {
+    return earliestFinishTime;
+  }
 
+  public List<Ride> getRides() {
+    return rides;
+  }
+
+  public boolean isAvailable(int time) {
+    for (Ride ride : rides) {
+      Position startIntersection = ride.getStartIntersection();
+      Position endIntersection = ride.getEndIntersection();
+
+    }
+  }
 }
