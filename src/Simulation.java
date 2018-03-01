@@ -1,6 +1,6 @@
 public class Simulation {
 
-  public Simulation(){
+  public Simulation(int height, int width, ){
   }
 
 }
