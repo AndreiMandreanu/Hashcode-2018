@@ -1,5 +1,6 @@
 public class Simulation {
 
-  public Simulation()
+  public Simulation(){
+  }
 
 }
