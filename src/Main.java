@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -27,7 +29,7 @@ public class Main {
                 B = Integer.parseInt(split[4]);
                 T = Integer.parseInt(split[5]);
 
-
+                List<Ride> rides = new ArrayList<Ride>();
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] arg = line.split(" ");
@@ -37,7 +39,13 @@ public class Main {
                     y = Integer.parseInt(arg[3]);
                     s = Integer.parseInt(arg[4]);
                     f = Integer.parseInt(arg[5]);
-                    
+                    Position start = new Position(a, b);
+                    Position finish = new Position(x, y);
+                    Ride ride = new Ride(start, finish, s, f);
+                    rides.add(ride);
+                    List<Car> cars = new ArrayList<Car>();
+
+                    Simulation simulation = new Simulation(cars, rides, R, C, B, T);
                 }
 
             } catch (IOException e) {
