@@ -71,7 +71,7 @@ public class Simulation{
     Position startPos = ride.getStartIntersection();
     Position endPos = ride.getStartIntersection();
     for(Vehicle v : vehicles) {
-      if(v.earliestFinishTime() <= endTime - distance(startPos, endPos) - distance(v.getCurrPosition(), startPos)) {
+      if(v.getEarliestFinishTime() <= endTime - distance(startPos, endPos) - distance(v.getCurrPosition(), startPos)) {
         availableVehicles.add(v);
       }
     }

@@ -5,6 +5,7 @@ public class Vehicle {
 
   private int earliestFinishTime;
   private List<Ride> rides;
+  private Position currPosition;
 
   public Vehicle() {
     earliestFinishTime = 0;
@@ -30,8 +31,7 @@ public class Vehicle {
               .abs(rideEndIntersection.getX() - rideStartIntersection.getX());
       earliestFinishTime = Math.max(earliestFinishTime + distanceFromLastRide,
           ride.getEarliestStart()) + rideDistance;
-    }
-    rides.add(ride);
+      rides.add(ride);
   }
 
   public int getEarliestFinishTime() {
@@ -40,6 +40,10 @@ public class Vehicle {
 
   public List<Ride> getRides() {
     return rides;
+  }
+
+  public Position getCurrPosition() {
+    return rides.get(rides.size()-1).getEndIntersection();
   }
 
 }
