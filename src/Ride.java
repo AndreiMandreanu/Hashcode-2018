@@ -1,5 +1,7 @@
 public class Ride {
 
+  public static final Position DEFAULT_POSITION = new Position(0, 0);
+
   private final Position startIntersection;
   private final Position endIntersection;
   private final int earliestStart;
