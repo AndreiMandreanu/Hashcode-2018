@@ -6,6 +6,8 @@ public class Ride {
   private final Position endIntersection;
   private final int earliestStart;
   private final int latestFinish;
+  private final int id;
+  private int idCounter = 0;
 
   public Ride(Position startIntersection, Position endIntersection,
       int earliestStart, int latestFinish) {
@@ -13,6 +15,8 @@ public class Ride {
     this.endIntersection = endIntersection;
     this.earliestStart = earliestStart;
     this.latestFinish = latestFinish;
+    this.id = idCounter;
+    idCounter++;
   }
 
 
@@ -33,4 +37,7 @@ public class Ride {
   }
 
 
+  public int getId() {
+    return id;
+  }
 }
