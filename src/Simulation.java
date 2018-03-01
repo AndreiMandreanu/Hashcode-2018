@@ -22,6 +22,12 @@ public class Simulation {
     this.width = width;
     this.heigth = height;
   }
+
+  public void assignRides() {
+    while(!rides.isEmpty()) {
+      assignRide();
+    }
+  }
   
 
 
