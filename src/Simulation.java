@@ -46,24 +46,24 @@ public class Simulation {
     Ride ride = rides.get(0);
     rides.remove(ride);
     List<Vehicle> availableVehicles = getAvailableVehicles(ride);
-
-    getClosestVehicle(availableVehicles, position).getRides.add(ride);
+    getClosestVehicle(ride.getStartIntersection(), availableVehicles).addRide(ride);
   }
 
-  public List<Vehicle> getAvailableVehicles(Ride ride) {
+  private List<Vehicle> getAvailableVehicles(Ride ride) {
     List <Vehicle> availableVehicles = new ArrayList<>();
-    int startTime = ride.getStartTime();
-    int endTime = ride.getEndTime();
-    Position startPos = ride.getStartPos();
-    Position endPos = ride.getEndPos();
+    int startTime = ride.getEarliestStart();
+    int endTime = ride.getLatestFinish();
+    Position startPos = ride.getStartIntersection();
+    Position endPos = ride.getEndIntersection();
     for(Vehicle v : vehicles) {
-      if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getPosition(v.whenFree)) {
+      if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getLastPosition()) {
         availableVehicles.add(v);
       }
     }
     return availableVehicles;
   }
 
-
-
+  public List<Vehicle> getVehicles() {
+    return vehicles;
+  }
 }
