@@ -1,6 +1,8 @@
+import java.util.List;
+
 public class Simulation {
 
-  private final List<Car> cars;
+  private final List<Vehicle> cars;
   private final List<Ride> rides;
   private final int bonus;
   private final int numberOfSteps;
@@ -10,7 +12,7 @@ public class Simulation {
 
 
 
-  public Simulation(List<Car> cars, List<Ride> rides, int width, int height, int bonus, int numberOfSteps){
+  public Simulation(List<Vehicle> cars, List<Ride> rides, int width, int height, int bonus, int numberOfSteps){
     this.cars = cars;
     this.rides = rides;
     this.bonus = bonus;

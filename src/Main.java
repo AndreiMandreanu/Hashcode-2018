@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -29,7 +31,8 @@ public class Main {
                 B = Integer.parseInt(split[4]);
                 T = Integer.parseInt(split[5]);
 
-                List<Ride> rides = new ArrayList<Ride>();
+                List<Ride> rides = new ArrayList<>();
+                List<Vehicle> cars;
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] arg = line.split(" ");
@@ -43,10 +46,9 @@ public class Main {
                     Position finish = new Position(x, y);
                     Ride ride = new Ride(start, finish, s, f);
                     rides.add(ride);
-                    List<Car> cars = new ArrayList<Car>();
-
-                    Simulation simulation = new Simulation(cars, rides, R, C, B, T);
                 }
+                cars = IntStream.range(0, F).mapToObj(i -> new Vehicle()).collect(Collectors.toList());
+                Simulation simulation = new Simulation(cars, rides, R, C, B, T);
 
             } catch (IOException e) {
                 e.printStackTrace();
