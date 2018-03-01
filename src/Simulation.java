@@ -21,13 +21,6 @@ public class Simulation {
     this.numberOfSteps = numberOfSteps;
     this.width = width;
     this.heigth = height;
-    assignRides();
-  }
-
-  public void assignRides() {
-    while(!rides.isEmpty()) {
-      assignRide();
-    }
   }
   
 
@@ -61,7 +54,7 @@ public class Simulation {
     int startTime = ride.getEarliestStart();
     int endTime = ride.getLatestFinish();
     Position startPos = ride.getStartIntersection();
-    Position endPos = ride.getStartIntersection();
+    Position endPos = ride.getEndIntersection();
     for(Vehicle v : vehicles) {
       if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getLastPosition()) {
         availableVehicles.add(v);

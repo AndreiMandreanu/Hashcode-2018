@@ -13,6 +13,7 @@ public class Ride {
     this.latestFinish = latestFinish;
   }
 
+
   public int getEarliestStart() {
     return earliestStart;
   }
