@@ -52,10 +52,10 @@ public class Simulation {
 
   public List<Vehicle> getAvailableVehicles(Ride ride) {
     List <Vehicle> availableVehicles = new ArrayList<>();
-    int startTime = ride.getStartTime();
-    int endTime = ride.getEndTime();
-    Position startPos = ride.getStartPos();
-    Position endPos = ride.getEndPos();
+    int startTime = ride.getEarliestStart();
+    int endTime = ride.getLatestFinish();
+    Position startPos = ride.getStartIntersection();
+    Position endPos = ride.getStartIntersection();
     for(Vehicle v : vehicles) {
       if(v.whenFree() <= endTime - distance(startPos, endPos) - v.getPosition(v.whenFree)) {
         availableVehicles.add(v);
