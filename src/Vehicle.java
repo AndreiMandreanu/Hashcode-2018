@@ -43,6 +43,7 @@ public class Vehicle {
   }
 
   public Position getCurrPosition() {
+    if(rides.isEmpty()) return new Position(0,0);
     return rides.get(rides.size()-1).getEndIntersection();
   }
 

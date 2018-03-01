@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class Main {
     static Simulation simulation;
+    static int idCounter = 0;
     public static void main(String[] args) {
         if (args.length == 0){
             throw new IllegalArgumentException("Wrong number of args. Need an input file");
@@ -45,13 +46,14 @@ public class Main {
                 f = Integer.parseInt(arg[5]);
                 Position start = new Position(a, b);
                 Position finish = new Position(x, y);
-                Ride ride = new Ride(start, finish, s, f);
+                Ride ride = new Ride(start, finish, s, f, idCounter);
+                idCounter++;
                 rides.add(ride);
             }
 
             cars = IntStream.range(0, F).mapToObj(i -> new Vehicle()).collect(Collectors.toList());
             simulation = new Simulation(cars, rides, R, C, B, T);
-
+            writeOut();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -65,7 +67,7 @@ public class Main {
     }
 
 
-    private void writeOut(){
+    private static void writeOut(){
         BufferedWriter bufferedWriter = null;
         try {
             bufferedWriter = new BufferedWriter(new FileWriter("output.out"));
@@ -81,7 +83,7 @@ public class Main {
             }
             assert bufferedWriter != null;
             try {
-                bufferedWriter.write(v.getRides().size() + " " + rideNos);
+                bufferedWriter.write(v.getRides().size() + " " + rideNos + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -61,7 +61,9 @@ public class Simulation{
     Ride ride = rides.get(0);
     rides.remove(ride);
     List<Vehicle> availableVehicles = getAvailableVehicles(ride);
-    getClosestVehicle(ride.getStartIntersection(), availableVehicles).addRide(ride);
+    if(getClosestVehicle(ride.getStartIntersection(), availableVehicles) != null) {
+      getClosestVehicle(ride.getStartIntersection(), availableVehicles).addRide(ride);
+    }
   }
 
   private List<Vehicle> getAvailableVehicles(Ride ride) {

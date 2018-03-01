@@ -10,13 +10,12 @@ public class Ride {
   private int idCounter = 0;
 
   public Ride(Position startIntersection, Position endIntersection,
-      int earliestStart, int latestFinish) {
+      int earliestStart, int latestFinish, int id) {
     this.startIntersection = startIntersection;
     this.endIntersection = endIntersection;
     this.earliestStart = earliestStart;
     this.latestFinish = latestFinish;
-    this.id = idCounter;
-    idCounter++;
+    this.id = id;
   }
 
 
