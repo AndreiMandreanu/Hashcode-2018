@@ -12,10 +12,13 @@ public class Vehicle {
   }
 
   public void addRide(Ride ride) {
+    Position currentPosition;
     if (rides.isEmpty()) {
-    }
+      currentPosition = new  Position(0,0);
+    } else {
       Ride lastRide = rides.get(rides.size() - 1);
-      Position currentPosition = lastRide.getEndIntersection();
+      currentPosition = lastRide.getEndIntersection();
+    }
       Position rideStartIntersection = ride.getStartIntersection();
       Position rideEndIntersection = ride.getEndIntersection();
       int distanceFromLastRide = Math.abs(rideStartIntersection.getY() -
