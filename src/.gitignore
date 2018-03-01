@@ -21,3 +21,5 @@
 *.backup
 *.kate-swp
 *.swp
+*.xml
+*.iml
