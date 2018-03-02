@@ -11,6 +11,7 @@ public class Simulation{
   private int currentStep = 0;
   private final int width;
   private final int heigth;
+  private double averageRideDistance;
 
   class RideComparator implements Comparator<Ride> {
 
@@ -28,6 +29,8 @@ public class Simulation{
     this.numberOfSteps = numberOfSteps;
     this.width = width;
     this.heigth = height;
+    averageRideDistance = rides.stream().map(r -> distance(r.getStartIntersection(), r.getEndIntersection())).reduce(0, (r1, r2) -> r1 + r2);
+    averageRideDistance /= rides.size();
     rides.sort(new RideComparator());
     assignRides();
   }
@@ -48,7 +51,7 @@ public class Simulation{
     int smallestDistance = Integer.MAX_VALUE;
     Vehicle closest = null;
     for (Vehicle c: vehicles){
-      int newDistance = distance(c.getCurrPosition(), position);
+      int newDistance = distance(c.getCurrPosition(), position) + c.getEarliestFinishTime();
       if (newDistance <= smallestDistance){
         smallestDistance = newDistance;
         closest = c;
